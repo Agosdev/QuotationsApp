@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "serviceConfiguration": {
+    "apiName": "quotations",
+    "serviceName": "AppSync",
+    "defaultAuthType": {
+      "mode": "AWS_IAM"
+    }
+  }
+}
