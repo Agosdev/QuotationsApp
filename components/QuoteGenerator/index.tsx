@@ -3,9 +3,9 @@ import React, { useState, useEffect } from 'react'
 // Material UI Imports
 import { Backdrop, Fade, Modal } from '@mui/material'
 import { ModalCircularProgress, QuoteGeneratorModalCon, QuoteGeneratorModalInnerCon, QuoteGeneratorSubTitle, QuoteGeneratorTitle } from './QuoteGenerator';
-// import ImageBlob from '../animations/ImageBlob';
-// import { ImageBlobCon } from '../animations/AnimationElements';
-// import AnimatedDownloadButton from '../animations/AnimatedDownloadButton';
+import ImageBlob from '../animations/ImageBlob';
+import { ImageBlobCon } from '../animations/AnimationElements';
+import AnimatedDownloadButton from '../animations/AnimatedDownloadButton';
 
 interface QuoteGeneratorModalProps {
     open: boolean,
@@ -102,7 +102,7 @@ const QuoteGeneratorModal = ({
                                 <QuoteGeneratorSubTitle style={{marginTop: "20px"}}>
                                     See a preview:
                                 </QuoteGeneratorSubTitle>
-                                {/* <ImageBlobCon>
+                                <ImageBlobCon>
                                     <ImageBlob
                                         quoteReceived={quoteReceived}
                                         blobUrl={blobUrl}
@@ -110,7 +110,7 @@ const QuoteGeneratorModal = ({
                                 </ImageBlobCon>
                                 <AnimatedDownloadButton
                                     handleDownload={handleDownload}
-                                /> */}
+                                />
                             </>
                         }
 

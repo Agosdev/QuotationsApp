@@ -12,6 +12,8 @@ import { API } from 'aws-amplify'
 import { generateAQuote, quotesQueryName } from '@/src/graphql/queries'
 import { GraphQLResult } from '@aws-amplify/api-graphql'
 import { useEffect, useState } from 'react'
+import BackgroundLayout from '@/components/BackgroundLayout/BackgroundLayout'
+import Transcriber from '@/components/Trascriber/Transcriber'
 
 
 // interface for our appsync <> lambda JSON response
@@ -131,6 +133,7 @@ export default function Home() {
     }
   }
 
+
   return (
     <>
       <Head>
@@ -140,7 +143,11 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-{/* Quote Generator Modal Pop-Up */}
+<BackgroundLayout/>
+
+{/* <Transcriber/> */}
+
+{/* 
 <QuoteGeneratorModal
           open={openGenerator}
           close={handleCloseGenerator}
@@ -150,40 +157,39 @@ export default function Home() {
           setQuoteReceived={setQuoteReceived}
         />
 
-        {/* Quote Generator */}
         <QuoteGeneratorCon>
           <QuoteGeneratorInnerCon>
             <QuoteGeneratorTitle>
-              Daily Inspiration Generator
+              Quote of the day
             </QuoteGeneratorTitle>
 
             <QuoteGeneratorSubTitle>
-              Looking for a splash of inspiration? Generate a quote card with a random inspirational quote provided by <FooterLink href="https://zenquotes.io/" target="_blank" rel="noopener noreferrer">ZenQuotes API</FooterLink>.
+             Get inspired generating a card with a random quote provided by <FooterLink href="https://zenquotes.io/" target="_blank" rel="noopener noreferrer">ZenQuotes API</FooterLink>.
             </QuoteGeneratorSubTitle>
 
             <GenerateQuoteButton onClick={handleOpenGenerator}>
               <GenerateQuoteButtonText>
-                Make a Quote
+                Get Quote
               </GenerateQuoteButtonText>
             </GenerateQuoteButton>
           </QuoteGeneratorInnerCon>
         </QuoteGeneratorCon>
 
-      {/* Background Image */}
       <BackgroundImage
           src={Heart}
           height="300"
           alt="cloudybackground1"
         />
 
-     {/* Footer */}
       <FooterCon>
           <>
             Quotes Generated: {numberOfQuotes}
             <br />
             Developed with <RedSpan>♥</RedSpan> by <FooterLink href="https://github.com/Agosdev" target="_blank" rel="noopener noreferrer"> @Agosdev </FooterLink>
           </>
-        </FooterCon>
+        </FooterCon> */}
+
+        
     </>
   )
 }

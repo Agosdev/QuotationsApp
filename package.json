@@ -13,11 +13,16 @@
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
     "@mui/material": "^5.14.13",
+    "@react-three/drei": "^9.88.0",
+    "@react-three/fiber": "^8.14.5",
     "aws-amplify": "^5.3.11",
     "next": "13.5.4",
     "react": "^18",
     "react-dom": "^18",
-    "styled-components": "^6.0.8"
+    "react-lottie-player": "^1.5.5",
+    "styled-components": "^6.0.8",
+    "three": "^0.157.0",
+    "usellm": "^0.13.0"
   },
   "devDependencies": {
     "@types/node": "^20",
