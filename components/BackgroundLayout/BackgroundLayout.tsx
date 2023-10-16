@@ -13,7 +13,7 @@ return (
 <Suspense fallback={null}>
  <Intro3D/>
 </Suspense>
-<OrbitControls  enablePan={false} />
+<OrbitControls autoRotate enablePan={false} />
 </Canvas>
 
 )
