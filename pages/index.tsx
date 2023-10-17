@@ -3,17 +3,19 @@ import Image from 'next/image'
 import styles from '@/styles/Home.module.css'
 
 // Components
-import { BackgroundImage , FooterCon, FooterLink, GenerateQuoteButton, GenerateQuoteButtonText, GradientBackgroundCon, QuoteGeneratorCon, QuoteGeneratorInnerCon, QuoteGeneratorSubTitle, QuoteGeneratorTitle, RedSpan } from '@/components/QuoteGenerator/QuoteGenerator'
+import { BackgroundImage, FooterCon, FooterLink, GenerateQuoteButton, GenerateQuoteButtonText,  QuoteGeneratorCon, QuoteGeneratorInnerCon,   QuoteGeneratorTitle, RedSpan } from '@/components/QuoteGenerator/QuoteGenerator'
 import QuoteGeneratorModal from '@/components/QuoteGenerator'
 
 // Assets
-import Heart from '../assets/heart.png'
+import Heart from '../assets/brickwall.jpeg'
 import { API } from 'aws-amplify'
 import { generateAQuote, quotesQueryName } from '@/src/graphql/queries'
 import { GraphQLResult } from '@aws-amplify/api-graphql'
 import { useEffect, useState } from 'react'
-import BackgroundLayout from '@/components/BackgroundLayout/BackgroundLayout'
 import Transcriber from '@/components/Trascriber/Transcriber'
+import dynamic from 'next/dynamic'
+ import Background3D from '@/components/Background3D/background3D'
+
 
 
 // interface for our appsync <> lambda JSON response
@@ -24,7 +26,6 @@ interface GenerateAQuoteData {
     body: string;
   }
 }
-
 
 // interface for our DynamoDB object
 interface UpdateQuoteInfoData {
@@ -43,6 +44,9 @@ function isGraphQLResultForquotesQueryName(response: any): response is GraphQLRe
 }> {
   return response.data && response.data.quotesQueryName && response.data.quotesQueryName.items;
 }
+
+const R3FBackground = dynamic(() => import('../components/Background3D/background3D'))
+
 
 export default function Home() {
 
@@ -143,11 +147,11 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-<BackgroundLayout/>
+  <R3FBackground />
 
 {/* <Transcriber/> */}
 
-{/* 
+
 <QuoteGeneratorModal
           open={openGenerator}
           close={handleCloseGenerator}
@@ -156,38 +160,29 @@ export default function Home() {
           quoteReceived={quoteReceived}
           setQuoteReceived={setQuoteReceived}
         />
+            {/* <BackgroundImage
+          src={Heart}
+          height="300"
+          width="200"
+          alt="brickwall"
+        /> */}
 
-        <QuoteGeneratorCon>
-          <QuoteGeneratorInnerCon>
-            <QuoteGeneratorTitle>
-              Quote of the day
-            </QuoteGeneratorTitle>
-
-            <QuoteGeneratorSubTitle>
-             Get inspired generating a card with a random quote provided by <FooterLink href="https://zenquotes.io/" target="_blank" rel="noopener noreferrer">ZenQuotes API</FooterLink>.
-            </QuoteGeneratorSubTitle>
-
+{/* Reemplazar boton para la request por otra iniciativa para obtener la frase */}
+        {/* <QuoteGeneratorCon>
             <GenerateQuoteButton onClick={handleOpenGenerator}>
               <GenerateQuoteButtonText>
                 Get Quote
               </GenerateQuoteButtonText>
             </GenerateQuoteButton>
-          </QuoteGeneratorInnerCon>
-        </QuoteGeneratorCon>
+        </QuoteGeneratorCon> */}
 
-      <BackgroundImage
-          src={Heart}
-          height="300"
-          alt="cloudybackground1"
-        />
 
-      <FooterCon>
+        <FooterCon>
           <>
-            Quotes Generated: {numberOfQuotes}
-            <br />
-            Developed with <RedSpan>♥</RedSpan> by <FooterLink href="https://github.com/Agosdev" target="_blank" rel="noopener noreferrer"> @Agosdev </FooterLink>
+            Developed with <RedSpan>♥</RedSpan> by <FooterLink href="https://github.com/Agosdev" target="_blank" rel="noopener noreferrer"> @Agosdev</FooterLink>. 
+            Random quote provided by <FooterLink href="https://zenquotes.io/" target="_blank" rel="noopener noreferrer">ZenQuotes API</FooterLink>.
           </>
-        </FooterCon> */}
+        </FooterCon>
 
         
     </>
