@@ -11,9 +11,8 @@ return (
 
     <Canvas>
         <Suspense fallback={<Loading />}>
-        <Loading />
-            {/* <Scene3D />
-            <OrbitControls autoRotate enablePan={false} /> */}
+            <Scene3D />
+            <OrbitControls autoRotate enablePan={false} />
         </Suspense>
     </Canvas>
  )
