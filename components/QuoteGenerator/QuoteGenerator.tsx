@@ -19,15 +19,18 @@ export const FooterCon = styled.div`
   position: absolute;
   bottom: 0;
   color: #3f3f3f;
+  background-color: transparent;
   z-index: 999999;
 `;
 
 export const RedSpan = styled.span`
     color: red;
+  background-color: transparent;
 `;
 
 export const FooterLink = styled(Link)`
   color: #3f3f3f;
+  background-color: transparent;
 `;
 
 export const QuoteGeneratorCon = styled.div`

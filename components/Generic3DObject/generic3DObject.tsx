@@ -12,7 +12,7 @@ interface IGeneric3DObject {
 const Generic3DObject = ({name, reference, scale, position, object, texture, onClick}: IGeneric3DObject) => {
 
     return (
-        <mesh name={name} ref={reference} scale={scale} position={position} onClick={onClick} >
+        <mesh rotation={[-Math.PI / 2, 0, 0]} name={name} ref={reference} scale={scale} position={position} onClick={onClick} >
           {
             texture && object ?
             <>
