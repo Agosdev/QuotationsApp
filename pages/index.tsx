@@ -10,7 +10,7 @@ import { API } from 'aws-amplify'
 import { generateAQuote, quotesQueryName } from '@/src/graphql/queries'
 import { GraphQLResult } from '@aws-amplify/api-graphql'
 import { useEffect, useState } from 'react'
-import Speaker from '@/components/Speaker/Speaker'
+import Speaker from '@/components/OpenAITool/OpenAITool'
 import dynamic from 'next/dynamic'
  import Background3D from '@/components/Background3D/background3D'
 
