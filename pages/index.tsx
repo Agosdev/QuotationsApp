@@ -1,18 +1,16 @@
 import Head from 'next/head'
-import Image from 'next/image'
-import styles from '@/styles/Home.module.css'
-
+ 
 // Components
 import { BackgroundImage, FooterCon, FooterLink, GenerateQuoteButton, GenerateQuoteButtonText,  QuoteGeneratorCon, QuoteGeneratorInnerCon,   QuoteGeneratorTitle, RedSpan } from '@/components/QuoteGenerator/QuoteGenerator'
 import QuoteGeneratorModal from '@/components/QuoteGenerator'
 
 // Assets
-import Heart from '../assets/brickwall.jpeg'
+import QuoteIcon from '../assets/quoteICON.png'
 import { API } from 'aws-amplify'
 import { generateAQuote, quotesQueryName } from '@/src/graphql/queries'
 import { GraphQLResult } from '@aws-amplify/api-graphql'
 import { useEffect, useState } from 'react'
-import Transcriber from '@/components/Trascriber/Transcriber'
+import Speaker from '@/components/Speaker/Speaker'
 import dynamic from 'next/dynamic'
  import Background3D from '@/components/Background3D/background3D'
 
@@ -147,9 +145,18 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-  <R3FBackground />
+      <BackgroundImage
+          src={QuoteIcon}
+          height={500}
+          width={500}
+          alt="QuoteIcon"
+        />
 
-{/* <Transcriber/> */}
+       {/* <R3FBackground /> */}
+
+
+
+  <Speaker/>
 
 
 <QuoteGeneratorModal
@@ -160,12 +167,8 @@ export default function Home() {
           quoteReceived={quoteReceived}
           setQuoteReceived={setQuoteReceived}
         />
-            {/* <BackgroundImage
-          src={Heart}
-          height="300"
-          width="200"
-          alt="brickwall"
-        /> */}
+
+
 
 {/* Reemplazar boton para la request por otra iniciativa para obtener la frase */}
         {/* <QuoteGeneratorCon>

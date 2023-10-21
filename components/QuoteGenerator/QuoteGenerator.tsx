@@ -5,9 +5,8 @@ import { Box, CircularProgress } from "@mui/material";
 
 export const BackgroundImage = styled(Image)`
   position: relative;
+  object-position: right top;
   z-index: 1;
-  margin-left: -10px;
-  margin-top: -10px;
 `;
 
 export const FooterCon = styled.div`
@@ -24,7 +23,7 @@ export const FooterCon = styled.div`
 `;
 
 export const RedSpan = styled.span`
-    color: red;
+  color: red;
   background-color: transparent;
 `;
 
