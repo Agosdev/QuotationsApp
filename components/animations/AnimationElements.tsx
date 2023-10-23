@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import Lottie from 'react-lottie-player'
 
 export const ImageBlobCon = styled.div`
     position: relative;
@@ -36,14 +35,18 @@ export const ImageBlobCon = styled.div`
 
 export const DownloadQuoteCardCon = styled.div`
     border: 2px solid darkgrey;
-    width: 400px;
-    position: relative;
     border-radius: 20px;
+    position: relative;
+    bottom: 0;
+    width: 400px;
+    height: 60px;
     cursor: pointer;
-    margin-top: 20px;
+    margin-top: 50px;
     transform: scale(0.7);
-    width: calc(70vw/2);
-    margin: auto;
+    width: calc(70vw/3);
+    margin:  auto;
+    font-family: var(--font);
+    
     &:hover {
         background: rgb(193 193 255 / 3%);
         box-shadow: 0 8px 32px 0 rgb(31 38 135 / 37%);
@@ -53,27 +56,13 @@ export const DownloadQuoteCardCon = styled.div`
     }
 `;
 
-export const CenteredLottie = styled(Lottie)`
-    width: 250px;
-    height: 250px;
-    left: 50%;
-    transform: translateX(-50%);
-    position: relative;
-    margin-top: -40px;
-    pointer-events: none;
-`;
 
 export const DownloadQuoteCardConText = styled.div`
-    color: white;
-    font-family: 'Caveat', cursive;
+    color: var(--gray);
+    background-color: transparent;
     font-size: 35px;
-    position: relative;
-    width: 100%;
     text-align: center;
-    padding: 0px 20px 0px 20px;
-    margin-top: -60px;
-    margin-bottom: 10px;
-    pointer-events: none;
+    
     @media only screen and (max-width: 600px) {
         font-size: 25px;
     }

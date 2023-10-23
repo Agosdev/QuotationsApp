@@ -88,7 +88,7 @@ const QuoteGeneratorModal = ({
                                 <QuoteGeneratorSubTitle style={{marginTop: "20px"}}>
                                     {wiseDevQuote}
                                     <br></br>
-                                    <span style={{fontSize: 26}}>{wiseDevQuoteAuthor}</span>
+                                    {wiseDevQuoteAuthor}
                                 </QuoteGeneratorSubTitle>
                             </>
                          }
@@ -97,11 +97,8 @@ const QuoteGeneratorModal = ({
                         {quoteReceived !== null && 
                             <>
                                 <QuoteGeneratorTitle>
-                                    Download your quote!
+                                   Preview
                                 </QuoteGeneratorTitle>
-                                <QuoteGeneratorSubTitle style={{marginTop: "20px"}}>
-                                    See a preview:
-                                </QuoteGeneratorSubTitle>
                                 <ImageBlobCon>
                                     <ImageBlob
                                         quoteReceived={quoteReceived}

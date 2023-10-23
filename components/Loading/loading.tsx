@@ -1,17 +1,9 @@
 import React from 'react'
-import { Cloud, Float,  Text3D, useMatcapTexture } from '@react-three/drei'
+import { Cloud, Float } from '@react-three/drei'
 import { Colors } from '@/enums';
  
 
 const Loading = () => {
-  const [matcapTexture] = useMatcapTexture("3B3C3F_DAD9D5_929290_ABACA8");
-
-  const textProps = {
-    letterSpacing: 0.4,
-    size: 0.4,
-    font: "/fonts/gt.json"
-  }
-
 
   return (
     <>
@@ -22,11 +14,6 @@ const Loading = () => {
 
           <spotLight intensity={300} angle={Math.PI/1} position={[-8,5,-3]} />
           <spotLight intensity={300} angle={Math.PI/1} position={[-8,15,-3]} />
-
-          <Text3D {...textProps}>
-            {`LOADING...`}
-            <meshMatcapMaterial color={Colors.BLUE} matcap={matcapTexture} />
-          </Text3D>
 
        </Float>
     </>

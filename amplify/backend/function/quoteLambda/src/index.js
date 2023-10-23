@@ -113,7 +113,6 @@ exports.handler = async (event) => {
                   font-family: Verdana;
               }
               </style>
-              <circle cx="382" cy="76" r="44" fill="rgba(255, 255, 255, 0.155)"/>
               <text x="382" y="76" dy="50" text-anchor="middle" font-size="90" font-family="Verdana" fill="white">"</text>
               <g>
                   <rect x="0" y="0" width="${width}" height="auto"></rect>
@@ -124,7 +123,7 @@ exports.handler = async (event) => {
                 </g>
               <text x="${width / 2}" y="${
           height - 10
-        }" class="footerStyles">Developed by @Agosdev | Quotes from ZenQuotes.io</text>
+        }" class="footerStyles">Quotes from ZenQuotes.io</text>
           </svg>
         `;
       

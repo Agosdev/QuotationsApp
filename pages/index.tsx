@@ -1,7 +1,7 @@
 import Head from 'next/head'
  
 // Components
-import { FooterCon, FooterLink, GenerateQuoteButton, GenerateQuoteButtonText,  QuoteGeneratorCon, QuoteGeneratorInnerCon,   QuoteGeneratorTitle, RedSpan } from '@/components/QuoteGenerator/QuoteGeneratorElements'
+import { BackgroundCon, FooterCon, FooterLink, GenerateQuoteButton, GenerateQuoteButtonText,  QuoteGeneratorCon, QuoteGeneratorInnerCon,   QuoteGeneratorTitle, RedSpan } from '@/components/QuoteGenerator/QuoteGeneratorElements'
 import QuoteGeneratorModal from '@/components/QuoteGenerator'
 
 // Assets
@@ -142,14 +142,12 @@ export default function Home() {
       </Head>
 
 
-
-       {/* <R3FBackground /> */}
-
-
-
   {/* <Speaker/> */}
+    <BackgroundCon>
 
-<QuoteGeneratorModal
+      {/* <R3FBackground /> */}
+
+        <QuoteGeneratorModal
           open={openGenerator}
           close={handleCloseGenerator}
           processingQuote={processingQuote}
@@ -159,28 +157,25 @@ export default function Home() {
         />
 
 
-
-{/* Reemplazar boton para la request por otra iniciativa para obtener la frase */}
         <QuoteGeneratorCon>
+          <QuoteGeneratorInnerCon>
             <GenerateQuoteButton onClick={handleOpenGenerator}>
               <GenerateQuoteButtonText>
-                Get Quote
+                Get a quote
               </GenerateQuoteButtonText>
             </GenerateQuoteButton>
+          </QuoteGeneratorInnerCon>
         </QuoteGeneratorCon>
-
 
         <FooterCon>
           <>
-            Quotes Generated: {numberOfQuotes}
-            <br />
-            Developed with <RedSpan>♥</RedSpan> by <FooterLink href="https://github.com/Agosdev" target="_blank" rel="noopener noreferrer"> @Agosdev</FooterLink>. 
-            <br />
-            Quotes provided by <FooterLink href="https://zenquotes.io/" target="_blank" rel="noopener noreferrer">ZenQuotes API</FooterLink>.
-          </>
+            Quotes Generated: {numberOfQuotes}. 
+             Developed with <RedSpan>♥</RedSpan> by <FooterLink href="https://github.com/Agosdev" target="_blank" rel="noopener noreferrer"> @Agosdev</FooterLink>. 
+           </>
         </FooterCon>
 
-        
+    </BackgroundCon>
+  
     </>
   )
 }

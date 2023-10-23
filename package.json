@@ -19,7 +19,6 @@
     "next": "13.5.4",
     "react": "^18",
     "react-dom": "^18",
-    "react-lottie-player": "^1.5.5",
     "styled-components": "^6.0.8",
     "three": "^0.157.0",
     "usellm": "^0.13.0"
