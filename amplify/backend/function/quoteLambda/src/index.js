@@ -1,7 +1,4 @@
 /* Amplify Params - DO NOT EDIT
-	API_QUOTATIONS_GRAPHQLAPIIDOUTPUT
-	API_QUOTATIONS_QUOTEAPPDATATABLE_ARN
-	API_QUOTATIONS_QUOTEAPPDATATABLE_NAME
 	ENV
 	REGION
 Amplify Params - DO NOT EDIT */
@@ -22,30 +19,30 @@ const fs = require('fs');
 
 // Function: update DynamoDB table
 async function updateQuoteDDBObject() {
-    const quoteTableName = process.env.API_QUOTATIONS_QUOTEAPPDATATABLE_NAME;
-    const quoteObjectID = "12232-234234-234234234-234234234";
+    const quoteTableName = process.env.REGION;
+    const quoteObjectID = "203532148628671682974077446150";
 
     try {
-        var quoteParams = {
-            TableName: quoteTableName,
-            Key: {
-                "id": quoteObjectID,
-            },
-            UpdateExpression: "SET #quotesGenerated = #quotesGenerated + :inc",
-            ExpressionAttributeValues: {
-                ":inc": 1,
-            },
-            ExpressionAttributeNames: {
-                "#quotesGenerated": "quotesGenerated",
-            },
-            ReturnValues: "UPDATED_NEW"
-        };
+      var quoteParams = {
+          TableName: quoteTableName,
+          Key: {
+              "id": quoteObjectID,
+          },
+          UpdateExpression: "SET #quotesGenerated = #quotesGenerated + :inc",
+          ExpressionAttributeValues: {
+              ":inc": 1,
+          },
+          ExpressionAttributeNames: {
+              "#quotesGenerated": "quotesGenerated",
+          },
+          ReturnValues: "UPDATED_NEW"
+      };
 
-        const updateQuoteObject = await docClient.update(quoteParams).promise();
-        return updateQuoteObject;
-    } catch (error) {
-        console.log('error updating quote object in DynamoDB', error)
-    }
+      const updateQuoteObject = await docClient.update(quoteParams).promise();
+      return updateQuoteObject;
+  } catch (error) {
+      console.log('error updating quote object in DynamoDB', error)
+  }
 }
 
 exports.handler = async (event) => {
@@ -63,7 +60,6 @@ exports.handler = async (event) => {
         // Validate response to the api
         const response = await fetch(apiURLInput);
         var quoteData = await response.json();
-        console.log(quoteData);
       
         // quote elements
         quoteText = quoteData[0].q;
@@ -89,41 +85,39 @@ exports.handler = async (event) => {
         if (newText !== "") {
           tspanElements += `<tspan x="${width / 2}" dy="1.2em">${newText}</tspan>`;
         }
-        console.log(tspanElements);
+        console.log('TSPAN',tspanElements);
       
         // Construct the SVG
         const svgImage = `
           <svg width="${width}" height="${height}">
-              <style>
-                 .title { 
-                   fill: #ffffff; 
-                  font-size: 20px; 
-                     font-weight: bold;
-                }
-               .quoteAuthorStyles {
-                     font-size: 35px;
+                <style>
+                  .title { 
+                    fill: #ffffff; 
+                    font-size: 20px; 
                     font-weight: bold;
-                   padding: 50px;
-              }
-                .footerStyles {
-                  font-size: 20px;
-                     font-weight: bold;
+                  }
+                  .quoteAuthorStyles {
+                    font-size: 35px;
+                    font-weight: bold;
+                    padding: 50px;
+                  }
+                  .footerStyles {
+                    font-size: 20px;
+                    font-weight: bold;
                     fill: lightgrey;
-                   text-anchor: middle;
-                  font-family: Verdana;
-              }
-              </style>
+                    text-anchor: middle;
+                    font-family: Verdana;
+                  }
+                </style>
               <text x="382" y="76" dy="50" text-anchor="middle" font-size="90" font-family="Verdana" fill="white">"</text>
-              <g>
-                  <rect x="0" y="0" width="${width}" height="auto"></rect>
-                     <text id="lastLineOfQuote" x="375" y="120" font-family="Verdana" font-size="35" fill="white" text-anchor="middle">
-                        ${tspanElements}
-                    <tspan class="quoteAuthorStyles" x="375" dy="1.8em">- ${quoteAuthor}</tspan>
-               </text>
-                </g>
-              <text x="${width / 2}" y="${
-          height - 10
-        }" class="footerStyles">Quotes from ZenQuotes.io</text>
+                  <g>
+                    <rect x="0" y="0" width="${width}" height="auto"></rect>
+                      <text id="lastLineOfQuote" x="375" y="120" font-family="Verdana" font-size="35" fill="white" text-anchor="middle">
+                          ${tspanElements}
+                      <tspan class="quoteAuthorStyles" x="375" dy="1.8em">- ${quoteAuthor}</tspan>
+                      </text>
+                  </g>
+              <text x="${width / 2}" y="${height - 10}" class="footerStyles">Quotes from ZenQuotes.io</text>
           </svg>
         `;
       

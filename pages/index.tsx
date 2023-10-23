@@ -60,7 +60,6 @@ export default function Home() {
           queryName: "LOVE",
         },
       })
-      console.log('response', response);
 
       // Create type guards
       if (!isGraphQLResultForquotesQueryName(response)) {
@@ -95,6 +94,7 @@ export default function Home() {
     e.preventDefault();
     setOpenGenerator(true);
     setProcessingQuote(true);
+
     try {
       // Run Lambda Function
       const runFunction = "runFunction";
@@ -112,19 +112,13 @@ export default function Home() {
       const bodyAndBase64 = responseReStringified.substring(bodyIndex);
       const bodyArray = bodyAndBase64.split(",");
       const body = bodyArray[0];
-      console.log(body);
       setQuoteReceived(body);
 
-      // End state:
       setProcessingQuote(false);
 
       // Fetch if any new quotes were generated from counter
       updateQuoteInfo();
        
-      // setProcessingQuote(false);
-      // setTimeout(() => {
-      //   setProcessingQuote(false);
-      // }, 3000);
     } catch (error) {
       console.log('error generating quote:', error);
       setProcessingQuote(false);
