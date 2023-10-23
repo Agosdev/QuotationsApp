@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 
 // Material UI Imports
 import { Backdrop, Fade, Modal } from '@mui/material'
-import { ModalCircularProgress, QuoteGeneratorModalCon, QuoteGeneratorModalInnerCon, QuoteGeneratorTitle } from './QuoteGenerator';
+import { ModalCircularProgress, QuoteGeneratorModalCon, QuoteGeneratorModalInnerCon, QuoteGeneratorSubTitle, QuoteGeneratorTitle } from './QuoteGeneratorElements';
 import ImageBlob from '../animations/ImageBlob';
 import { ImageBlobCon } from '../animations/AnimationElements';
 import AnimatedDownloadButton from '../animations/AnimatedDownloadButton';
@@ -85,11 +85,11 @@ const QuoteGeneratorModal = ({
                                 <QuoteGeneratorTitle>
                                     Creating your quote...
                                 </QuoteGeneratorTitle>
-                                <span style={{marginTop: "20px"}}>
+                                <QuoteGeneratorSubTitle style={{marginTop: "20px"}}>
                                     {wiseDevQuote}
                                     <br></br>
                                     <span style={{fontSize: 26}}>{wiseDevQuoteAuthor}</span>
-                                </span>
+                                </QuoteGeneratorSubTitle>
                             </>
                          }
 
@@ -99,6 +99,9 @@ const QuoteGeneratorModal = ({
                                 <QuoteGeneratorTitle>
                                     Download your quote!
                                 </QuoteGeneratorTitle>
+                                <QuoteGeneratorSubTitle style={{marginTop: "20px"}}>
+                                    See a preview:
+                                </QuoteGeneratorSubTitle>
                                 <ImageBlobCon>
                                     <ImageBlob
                                         quoteReceived={quoteReceived}
