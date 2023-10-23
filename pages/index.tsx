@@ -71,6 +71,7 @@ export default function Home() {
       }
 
       const receivedNumberOfQuotes = response.data.quotesQueryName.items[0].quotesGenerated;
+      console.log('res', response.data.quotesQueryName.items[0])
       setNumberOfQuotes(receivedNumberOfQuotes);
 
     } catch (error) {
