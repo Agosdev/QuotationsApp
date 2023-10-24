@@ -6,7 +6,6 @@ export const ButtonCon = styled.div`
     left: 50%;
     transform: translate(-50%,-50%);
     position: absolute;
-    z-index: 2;
 `;
 
 export const ButtonInnerCon = styled.div`

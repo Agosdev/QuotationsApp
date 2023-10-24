@@ -43,8 +43,7 @@ export const QuoteGeneratorModalCon = styled(Box)`
     left: 50%;
     transform: translate(-50%, -50%);
     width: 70vw;
-    height: 70vh;
-    background-color: transparent;
+    height: 90vh;
 
     &:focus {
       outline: none !important;
@@ -60,7 +59,6 @@ export const QuoteGeneratorModalInnerCon = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    background-color: transparent;
 `;
 
 export const ModalCircularProgress = styled(CircularProgress)`
@@ -71,5 +69,5 @@ export const ModalCircularProgress = styled(CircularProgress)`
     margin-left: -55px;
     left: 50%;
     transform: translateX(-50%);
-    background-color: transparent !important;
+    background-color: transparent;
 `;

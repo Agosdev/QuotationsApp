@@ -9,6 +9,7 @@ export const FooterCon = styled.div`
   position: absolute;
   bottom: 0;
   color: var(--gray);
+  z-index: 999999;
   background-color: transparent;
 `;
 
