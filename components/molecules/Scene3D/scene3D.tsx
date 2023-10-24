@@ -1,12 +1,13 @@
 import * as THREE from 'three';
-import { useMemo, useRef, useState } from "react";
-import {  Cloud, Float, PerspectiveCamera,  Sparkles, Stars } from "@react-three/drei";
+import {  useMemo, useRef, useState } from "react";
+import {  Cloud, Float, Html, PerspectiveCamera,  Sparkles, Stars } from "@react-three/drei";
 import {  useFrame } from "@react-three/fiber";
-import Audio from "../Audio/audio";
+import Audio from "../../atoms/Audio/audio";
 import { getRandomInt } from "@/utils/randomNumber";
-import Generic3DObject from "../Generic3DObject/generic3DObject";
-import Model3D from "../Model3D/Model3D";
+import Generic3DObject from "../../atoms/Generic3DObject/generic3DObject";
+import Model3D from "../../atoms/Model3D/Model3D";
 import { Colors } from '@/enums';
+import GenerateQuotes from '@/components/organisms/GenerateQuotes/GenerateQuotes';
 
 
 const cloudColorsList = [Colors.PINK, Colors.GREEN, Colors.YELLOW, Colors.PURPLE, Colors.BLUE]
@@ -31,6 +32,10 @@ const Scene3D = () => {
     WaterTexture.wrapT = THREE.RepeatWrapping;
     WaterTexture.repeat.set( 2, 2 );
 
+
+// BOTON
+
+
   return (
     <PerspectiveCamera>
 
@@ -53,6 +58,11 @@ const Scene3D = () => {
         </Float>
 
         <Generic3DObject name="ocean" rotation={[-Math.PI / 2, 0, 0]} object={<planeGeometry  args={[200, 200, 100, 100]} />} texture={WaterTexture} scale={10} position={[0,-20, 0]} color={'lightblue'}/>
+
+        <Html>
+            <GenerateQuotes />
+        </Html>
+
 
       </PerspectiveCamera>
     )

@@ -3,17 +3,17 @@ import React, { useState, useEffect } from 'react'
 // Material UI Imports
 import { Backdrop, Fade, Modal } from '@mui/material'
 import { ModalCircularProgress, QuoteGeneratorModalCon, QuoteGeneratorModalInnerCon, QuoteGeneratorSubTitle, QuoteGeneratorTitle } from './QuoteGeneratorElements';
-import ImageBlob from '../animations/ImageBlob';
-import { ImageBlobCon } from '../animations/AnimationElements';
-import AnimatedDownloadButton from '../animations/AnimatedDownloadButton';
+import { ImageBlobCon } from '@/components/animations/AnimationElements';
+import ImageBlob from '@/components/animations/ImageBlob';
+import AnimatedDownloadButton from '@/components/animations/AnimatedDownloadButton';
 
 interface QuoteGeneratorModalProps {
     open: boolean,
     close: () => void;
-    processingQuote: boolean;
-    setProcessingQuote: React.Dispatch<React.SetStateAction<boolean>>;
-    quoteReceived: String | null;
+    setProcessingQuote: (processingQuote: boolean) => void;
     setQuoteReceived: React.Dispatch<React.SetStateAction<String | null>>;
+    processingQuote: boolean;
+    quoteReceived: String | null;
 }
 
 const style = {
@@ -23,10 +23,10 @@ const style = {
 const QuoteGeneratorModal = ({
     open, 
     close,
-    processingQuote,
     setProcessingQuote,
-    quoteReceived,
     setQuoteReceived,
+    processingQuote,
+    quoteReceived,
 }: QuoteGeneratorModalProps) => {
 
     const wiseDevQuote = '"If you can center a div, anything is possible."';
@@ -97,7 +97,7 @@ const QuoteGeneratorModal = ({
                         {quoteReceived !== null && 
                             <>
                                 <QuoteGeneratorTitle>
-                                   Preview
+                                   Look at a preview
                                 </QuoteGeneratorTitle>
                                 <ImageBlobCon>
                                     <ImageBlob

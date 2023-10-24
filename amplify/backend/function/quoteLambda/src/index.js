@@ -84,7 +84,6 @@ exports.handler = async (event) => {
         if (newText !== "") {
           tspanElements += `<tspan x="${width / 2}" dy="1.2em">${newText}</tspan>`;
         }
-        console.log('TSPAN',tspanElements);
       
         // Construct the SVG
         const svgImage = `
