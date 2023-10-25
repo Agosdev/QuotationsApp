@@ -106,7 +106,6 @@ const GenerateQuotes = () => {
               const bodyArray = bodyAndBase64.split(",");
               const body = bodyArray[0];
               setQuoteReceived(body);
-        
               setProcessingQuote(false);
         
               // Fetch if any new quotes were generated from counter

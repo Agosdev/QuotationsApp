@@ -83,7 +83,7 @@ const QuoteGeneratorModal = ({
                         {(processingQuote === true && quoteReceived === null) &&
                             <>
                                 <QuoteGeneratorTitle>
-                                    Creating your quote...
+                                    Searching a quote for you...
                                 </QuoteGeneratorTitle>
                                 <QuoteGeneratorSubTitle style={{marginTop: "20px"}}>
                                     {wiseDevQuote}
@@ -121,7 +121,7 @@ const QuoteGeneratorModal = ({
                                 <QuoteGeneratorTitle>
                                    Use our Open AI Tools
                                 </QuoteGeneratorTitle>
-                                <OpenAITool quote={quoteReceived}/>
+                                <OpenAITool />
                              </>
                         }
                      </QuoteGeneratorModalInnerCon>

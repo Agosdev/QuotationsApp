@@ -4,16 +4,15 @@ import GenericButton from "@/components/atoms/GenericButton/GenericButton";
 import React, { useEffect, useState } from "react";
 import useLLM from "usellm";
 import { OpenAIToolCon } from "./OpenAIToolElements";
-interface IOpenAITool {
-  quote: string,
-}
 
-const OpenAITool = ({quote = 'The way to get started is to quit talking and begin doing.'}: IOpenAITool) => {
+const defaultQuote =  'The way to get started is to quit talking and begin doing.'
+
+const OpenAITool = () => {
   // llm chat states
   const llm = useLLM({ serviceUrl: "https://usellm.org/api/llm" });
   const [result, setResult] = useState("");
   // llm speaking states
-  const [text, setText] = useState<string>(quote)
+  const [text, setText] = useState<string>(defaultQuote)
   const [audioUrl, setAudioUrl] = useState<string>('')
 
   // llm chat function
@@ -38,14 +37,20 @@ const OpenAITool = ({quote = 'The way to get started is to quit talking and begi
   }
 
   useEffect(() => {
+    const getQuote = localStorage.getItem('quoteText')
+    console.log(getQuote)
+    if(getQuote) {
+      setText(getQuote)
+    }
     handleChatClick()
   }, [])
+
 
   return (
     <OpenAIToolCon>
 
         {/* INFO */}
-         <div style={{ whiteSpace: "pre-wrap" }}>{quote}</div>
+         <div style={{ whiteSpace: "pre-wrap" }}>{text}</div>
          {/* <div style={{ whiteSpace: "pre-wrap" }}>{result}</div> */}
         {/* <OpenAIToolCon> */}
 

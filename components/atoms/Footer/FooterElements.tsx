@@ -7,7 +7,7 @@ export const FooterCon = styled.div`
   font-family: 'Source Code Pro', monospace;
   font-size: 15px;
   position: absolute;
-  bottom: 0;
+  top: 0;
   color: var(--gray);
   z-index: 999999;
   background-color: transparent;

@@ -2,7 +2,7 @@ import React from "react";
 
 const index = () => {
   return (
-      <>CONTACT</>
+      <>CONTACT ME: agostina.ravazenghi@gmail.com</>
   );
 };
 
