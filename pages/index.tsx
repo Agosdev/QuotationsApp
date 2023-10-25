@@ -2,6 +2,8 @@ import Head from 'next/head'
 import Scene3D from '@/components/molecules/Scene3D/Scene3D'
 import Layout3D from '@/components/molecules/Layout3D/Layout3D'
 import GenerateQuotes from '@/components/organisms/GenerateQuotes/GenerateQuotes'
+import Footer from '@/components/atoms/Footer/Footer'
+import { BackgroundCon } from '@/styles/globals'
 
 export default function Home() {
 
@@ -14,9 +16,13 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
+
+      <BackgroundCon> 
           <Layout3D loading>
                 <Scene3D HTMLContent={<GenerateQuotes />}/>
           </Layout3D>
+      </BackgroundCon>
+
      </>
   )
 }

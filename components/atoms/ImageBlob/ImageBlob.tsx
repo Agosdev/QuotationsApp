@@ -16,7 +16,7 @@ const ImageBlob = ({
     }
 
     return (
-        <Image src={blobUrl} alt="Generated quote card" width={250} height={200} />
+        <Image src={blobUrl} alt="Generated quote card" width={200} height={150} />
     )
 }
 

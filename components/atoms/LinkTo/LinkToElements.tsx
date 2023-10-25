@@ -8,7 +8,7 @@ export const LinkTO = styled(Link)`
     background-color: transparent;
     text-decoration: none;
     text-align: center;
-    margin: 20px;
+    margin: 15px;
 
     &:hover {
         color: var(--gray);

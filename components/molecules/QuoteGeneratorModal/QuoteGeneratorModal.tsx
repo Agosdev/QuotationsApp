@@ -13,7 +13,7 @@ interface QuoteGeneratorModalProps {
     open: boolean,
     close: () => void;
     setProcessingQuote: (processingQuote: boolean) => void;
-    setQuoteReceived: React.Dispatch<React.SetStateAction<String | null>>;
+    setQuoteReceived: React.Dispatch<React.SetStateAction<string | null>>;
     processingQuote: boolean;
     quoteReceived: string | null;
 }
@@ -36,6 +36,7 @@ const QuoteGeneratorModal = ({
     const [blobUrl, setBlobUrl] = useState<string | null>(null);
     const [step3Visible, setStep3Visible] = useState<boolean>(false);
     
+
     // Function: Handling the download of quote card
     const handleDownload = () => {
         const link = document.createElement('a');
@@ -95,20 +96,20 @@ const QuoteGeneratorModal = ({
                         {/* State #2: Quote state fulfilled */}
                         {quoteReceived !== null && !step3Visible &&
                             <>
-                                <QuoteGeneratorTitle>
-                                   Look at a preview
-                                </QuoteGeneratorTitle>
-                                <ImageBlobCon>
-                                    <ImageBlob
-                                        quoteReceived={quoteReceived}
-                                        blobUrl={blobUrl}
-                                    />
-                                </ImageBlobCon>
-                                <GenericButton text={'Download card'} onClick={() => handleDownload()} /> 
+                                    <QuoteGeneratorTitle>
+                                    Look at a preview
+                                    </QuoteGeneratorTitle>
+                                    <ImageBlobCon>
+                                        <ImageBlob
+                                            quoteReceived={quoteReceived}
+                                            blobUrl={blobUrl}
+                                        />
+                                    </ImageBlobCon>
+                                    <GenericButton text={'Download card'} onClick={() => handleDownload()} /> 
                                 <QuoteGeneratorModalInnerCon> 
-                                <QuoteGeneratorSubTitle onClick={() => setStep3Visible(true)} >
-                                     I want to know more about this quote
-                                </QuoteGeneratorSubTitle>
+                                    {/* <QuoteGeneratorSubTitle style={{cursor: 'pointer'}} onClick={() => setStep3Visible(true)} >
+                                        I want to know more about this quote
+                                    </QuoteGeneratorSubTitle> */}
                                 </QuoteGeneratorModalInnerCon>
                              </>
                         }
@@ -116,16 +117,11 @@ const QuoteGeneratorModal = ({
                        {/* State #3: Use Open AI Tool */}
                         {quoteReceived !== null && step3Visible &&
                             <>
-                            <div style={{display:'flex', justifyContent: 'space-between',backgroundColor: 'transparent'}}>
-                                <LinkTo page='/' text='Go back' /> 
+                                <LinkTo page='/contactMe' text='Write the developer' /> 
                                 <QuoteGeneratorTitle>
                                    Use our Open AI Tools
                                 </QuoteGeneratorTitle>
-                                <LinkTo page='/contactMe' text='Write the developer' /> 
-                            </div>
-                                <QuoteGeneratorModalInnerCon> 
-                                    <OpenAITool quote={quoteReceived}/>
-                                </QuoteGeneratorModalInnerCon>
+                                <OpenAITool quote={quoteReceived}/>
                              </>
                         }
                      </QuoteGeneratorModalInnerCon>

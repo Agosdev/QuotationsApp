@@ -1,9 +1,9 @@
 'use client';
 
 import GenericButton from "@/components/atoms/GenericButton/GenericButton";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import useLLM from "usellm";
-import { QuoteGeneratorModalInnerCon } from "../QuoteGeneratorModal/QuoteGeneratorModalElements";
+import { OpenAIToolCon } from "./OpenAIToolElements";
 interface IOpenAITool {
   quote: string,
 }
@@ -24,6 +24,7 @@ const OpenAITool = ({quote = 'The way to get started is to quit talking and begi
         stream: true,
         onStream: ({ message }) => setResult(message.content),
       });
+
     } catch (error) {
       console.error("Something went wrong!", error);
     }
@@ -36,22 +37,24 @@ const OpenAITool = ({quote = 'The way to get started is to quit talking and begi
     setAudioUrl(audioUrl);
   }
 
+  useEffect(() => {
+    handleChatClick()
+  }, [])
+
   return (
-    <>
-    <QuoteGeneratorModalInnerCon>
+    <OpenAIToolCon>
 
-      {/* INFO */}
-      <GenericButton text="Read more info about the quote" onClick={() => handleChatClick()} />
-      <div style={{ whiteSpace: "pre-wrap" }}>{result}</div>
-      </QuoteGeneratorModalInnerCon>
-    <QuoteGeneratorModalInnerCon>
+        {/* INFO */}
+         <div style={{ whiteSpace: "pre-wrap" }}>{quote}</div>
+         {/* <div style={{ whiteSpace: "pre-wrap" }}>{result}</div> */}
+        {/* <OpenAIToolCon> */}
 
-      {/* AUDIO */}
-      <GenericButton text="Hear Quote" onClick={() => handleSpeakClick()} />
-      {audioUrl && <audio src={audioUrl} controls />}
+        {/* AUDIO */}
+        {/* <GenericButton text="Hear Quote" onClick={() => handleSpeakClick()} />
+        {audioUrl && <audio src={audioUrl} controls />} */}
 
-    </QuoteGeneratorModalInnerCon>
-    </>
+      {/* </OpenAIToolCon> */}
+    </OpenAIToolCon>
   );
   }
   

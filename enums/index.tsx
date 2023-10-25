@@ -5,3 +5,8 @@ export enum Colors {
     PURPLE = '#802cff',
     BLUE = '#5cfdf5',
   }
+
+export enum DayTime {
+    DAY = "day",
+    NIGHT = "night"
+}

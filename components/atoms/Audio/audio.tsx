@@ -9,7 +9,7 @@ interface IAudio {
 const Audio = ({ready = true, distance = 1,  musicURL}: IAudio) => { 
 return (
     <>
-    {ready && <PositionalAudio autoplay loop url={musicURL} distance={distance} />}
+    {ready && <PositionalAudio autoplay url={musicURL} loop distance={distance} hasPlaybackControl />}
     </>
 )}
 

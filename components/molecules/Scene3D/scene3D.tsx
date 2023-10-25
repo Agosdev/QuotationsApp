@@ -1,12 +1,13 @@
 import * as THREE from 'three';
-import {  useCallback, useMemo, useRef, useState  } from "react";
-import {  Cloud, Float, Html, PerspectiveCamera,  Sparkles, Stars } from "@react-three/drei";
+import {  useCallback, useEffect, useMemo, useRef, useState  } from "react";
+import {  Cloud, Float, Html, PerspectiveCamera,  Sky,  Sparkles, Stars } from "@react-three/drei";
 import {  useFrame } from "@react-three/fiber";
 import Audio from "../../atoms/Audio/Audio";
 import { getRandomInt } from "@/utils/randomNumber";
 import Generic3DObject from "../../atoms/Generic3DObject/Generic3DObject";
 import Model3D from "../../atoms/Model3D/Model3D";
-import { Colors } from '@/enums';
+import { Colors, DayTime } from '@/enums';
+import { getTimeOfDay } from '@/utils/getTimeOfDay';
 
 const cloudColorsList = [Colors.PINK, Colors.GREEN, Colors.YELLOW, Colors.PURPLE, Colors.BLUE]
 
@@ -14,8 +15,10 @@ interface IScene3D {
   HTMLContent: JSX.Element;
 }
 
-const Scene3D = ({HTMLContent}: IScene3D) => { 
+const Scene3D = ({HTMLContent}: IScene3D) => {
+    const daytime = getTimeOfDay() 
     const [cloudColor, setCloudColor] = useState<Colors>(Colors.BLUE)
+    const [isDay, setIsDay] = useState<boolean>(false)
 
     const ref = useRef<any>(null)
 
@@ -33,9 +36,17 @@ const Scene3D = ({HTMLContent}: IScene3D) => {
     WaterTexture.wrapT = THREE.RepeatWrapping;
     WaterTexture.repeat.set( 2, 2 );
 
+useEffect(() => {
+  if(daytime === DayTime.DAY) { 
+    setIsDay(true)
+  } else {
+    setIsDay(false)
+  }
+},[])
+
   return (
     <PerspectiveCamera>
-
+        {isDay && <Sky />}
         <ambientLight intensity={1} />
 
         <Generic3DObject name="moon" object={<sphereGeometry />} texture={MoonTexture} scale={50} position={[0,75,0]}/>
@@ -50,7 +61,7 @@ const Scene3D = ({HTMLContent}: IScene3D) => {
 
         <Float speed={5}>
           <Model3D name="ship" scale={0.5} model={'./models/ship_y.glb'} >
-              <Audio musicURL="./audio/ween-the-argus.mp3" distance={0.5}/>
+              <Audio musicURL="./audio/wavesSoundEffect.mp3" distance={0.5}/>
           </Model3D>
         </Float>
 

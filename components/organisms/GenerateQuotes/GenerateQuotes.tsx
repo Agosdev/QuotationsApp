@@ -36,10 +36,10 @@ const GenerateQuotes = () => {
       }
       
       
-      const [numberOfQuotes, setNumberOfQuotes] = useState<Number | null>(0);
+      const [numberOfQuotes, setNumberOfQuotes] = useState<number>(0);
       const [openGenerator, setOpenGenerator] = useState<boolean>(false);
       const [processingQuote, setProcessingQuote] = useState<boolean>(false);
-      const [quoteReceived, setQuoteReceived] = useState<String | null>(null);
+      const [quoteReceived, setQuoteReceived] = useState<string | null>(null);
       const [hideButton, setHideButton] = useState<boolean>(false);
 
       // Function to fetch our DynamoDB object (quotes generated)
