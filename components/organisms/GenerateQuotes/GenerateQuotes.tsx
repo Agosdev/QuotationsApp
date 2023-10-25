@@ -131,7 +131,7 @@ const GenerateQuotes = () => {
         
         {!hideButton && <GenericButton text={'Get a quote'} onClick={(e: React.SyntheticEvent) => handleOpenGenerator(e)} />}
 
-        {/* <Footer numberOfQuotes={numberOfQuotes}/> */}
+        <Footer numberOfQuotes={numberOfQuotes}/>
     </ GenerateQuotesCon >
   );
 };
