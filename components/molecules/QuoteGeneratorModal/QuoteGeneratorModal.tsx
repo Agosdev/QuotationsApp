@@ -2,10 +2,12 @@ import React, { useState, useEffect } from 'react'
 
 // Material UI Imports
 import { Backdrop, Fade, Modal } from '@mui/material'
-import { ModalCircularProgress, QuoteGeneratorModalCon, QuoteGeneratorModalInnerCon, QuoteGeneratorSubTitle, QuoteGeneratorTitle } from './QuoteGeneratorElements';
-import { ImageBlobCon } from '@/components/animations/AnimationElements';
-import ImageBlob from '@/components/animations/ImageBlob';
-import AnimatedDownloadButton from '@/components/animations/AnimatedDownloadButton';
+import { QuoteGeneratorModalCon, QuoteGeneratorModalInnerCon, QuoteGeneratorSubTitle, QuoteGeneratorTitle } from './QuoteGeneratorModalElements';
+import { ImageBlobCon } from '@/components/atoms/ImageBlob/ImageBlobElements';
+import ImageBlob from '@/components/atoms/ImageBlob/ImageBlob';
+ import GenericButton from '@/components/atoms/GenericButton/GenericButton';
+import LinkTo from '@/components/atoms/LinkTo/LinkTo';
+import OpenAITool from '../OpenAITool/OpenAITool';
 
 interface QuoteGeneratorModalProps {
     open: boolean,
@@ -13,11 +15,10 @@ interface QuoteGeneratorModalProps {
     setProcessingQuote: (processingQuote: boolean) => void;
     setQuoteReceived: React.Dispatch<React.SetStateAction<String | null>>;
     processingQuote: boolean;
-    quoteReceived: String | null;
+    quoteReceived: string | null;
 }
 
 const style = {
-
 };
 
 const QuoteGeneratorModal = ({
@@ -33,7 +34,8 @@ const QuoteGeneratorModal = ({
     const wiseDevQuoteAuthor = "- a wise senior software engineer";
 
     const [blobUrl, setBlobUrl] = useState<string | null>(null);
-
+    const [step3Visible, setStep3Visible] = useState<boolean>(false);
+    
     // Function: Handling the download of quote card
     const handleDownload = () => {
         const link = document.createElement('a');
@@ -67,6 +69,7 @@ const QuoteGeneratorModal = ({
             open={open}
             onClose={close}
             closeAfterTransition
+            sx={{ background: 'transparent'}}
             BackdropComponent={Backdrop}
             BackdropProps={{
                 timeout: 500,
@@ -78,10 +81,6 @@ const QuoteGeneratorModal = ({
                         {/* State #1: Processing request of quote + quote state is empty */}
                         {(processingQuote === true && quoteReceived === null) &&
                             <>
-                                <ModalCircularProgress
-                                    size={"8rem"}
-                                    thickness={2.5}
-                                />
                                 <QuoteGeneratorTitle>
                                     Creating your quote...
                                 </QuoteGeneratorTitle>
@@ -94,7 +93,7 @@ const QuoteGeneratorModal = ({
                          }
 
                         {/* State #2: Quote state fulfilled */}
-                        {quoteReceived !== null && 
+                        {quoteReceived !== null && !step3Visible &&
                             <>
                                 <QuoteGeneratorTitle>
                                    Look at a preview
@@ -105,14 +104,31 @@ const QuoteGeneratorModal = ({
                                         blobUrl={blobUrl}
                                     />
                                 </ImageBlobCon>
-                                <AnimatedDownloadButton
-                                    handleDownload={handleDownload}
-                                />
-                            </>
+                                <GenericButton text={'Download card'} onClick={() => handleDownload()} /> 
+                                <QuoteGeneratorModalInnerCon> 
+                                <QuoteGeneratorSubTitle onClick={() => setStep3Visible(true)} >
+                                     I want to know more about this quote
+                                </QuoteGeneratorSubTitle>
+                                </QuoteGeneratorModalInnerCon>
+                             </>
                         }
 
-
-                    </QuoteGeneratorModalInnerCon>
+                       {/* State #3: Use Open AI Tool */}
+                        {quoteReceived !== null && step3Visible &&
+                            <>
+                            <div style={{display:'flex', justifyContent: 'space-between',backgroundColor: 'transparent'}}>
+                                <LinkTo page='/' text='Go back' /> 
+                                <QuoteGeneratorTitle>
+                                   Use our Open AI Tools
+                                </QuoteGeneratorTitle>
+                                <LinkTo page='/contactMe' text='Write the developer' /> 
+                            </div>
+                                <QuoteGeneratorModalInnerCon> 
+                                    <OpenAITool quote={quoteReceived}/>
+                                </QuoteGeneratorModalInnerCon>
+                             </>
+                        }
+                     </QuoteGeneratorModalInnerCon>
                 </QuoteGeneratorModalCon>
 
             </Fade>

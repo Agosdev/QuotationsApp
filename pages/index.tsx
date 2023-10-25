@@ -1,7 +1,7 @@
 import Head from 'next/head'
-import { BackgroundCon } from '@/components/molecules/QuoteGenerator/QuoteGeneratorElements'
-import dynamic from 'next/dynamic'
-const Background3D = dynamic(() => import('../components/organisms/Background3D/background3D'))
+import Scene3D from '@/components/molecules/Scene3D/Scene3D'
+import Layout3D from '@/components/molecules/Layout3D/Layout3D'
+import GenerateQuotes from '@/components/organisms/GenerateQuotes/GenerateQuotes'
 
 export default function Home() {
 
@@ -14,10 +14,9 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <BackgroundCon>
-        <Background3D />
-      </BackgroundCon>
-  
-    </>
+          <Layout3D loading>
+                <Scene3D HTMLContent={<GenerateQuotes />}/>
+          </Layout3D>
+     </>
   )
 }

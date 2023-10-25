@@ -1,24 +1,26 @@
 'use client';
 
+import GenericButton from "@/components/atoms/GenericButton/GenericButton";
 import React, { useState } from "react";
 import useLLM from "usellm";
+import { QuoteGeneratorModalInnerCon } from "../QuoteGeneratorModal/QuoteGeneratorModalElements";
+interface IOpenAITool {
+  quote: string,
+}
 
-
-const OpenAITool = () => {
-      {/* INFO DE LA FRASE */}
+const OpenAITool = ({quote = 'The way to get started is to quit talking and begin doing.'}: IOpenAITool) => {
+  // llm chat states
   const llm = useLLM({ serviceUrl: "https://usellm.org/api/llm" });
-  const quote = 'The way to get started is to quit talking and begin doing.'
   const [result, setResult] = useState("");
-// AUDIO
+  // llm speaking states
   const [text, setText] = useState<string>(quote)
   const [audioUrl, setAudioUrl] = useState<string>('')
 
-      {/* INFO DE LA FRASE */}
-
-  async function handleClick() {
+  // llm chat function
+  async function handleChatClick() {
     try {
       await llm.chat({
-        messages: [{ role: "user", content: `Give me more information about the following quote: ${quote}` }],
+        messages: [{ role: "user", content: `Give me more information about the following quote: ${text}` }],
         stream: true,
         onStream: ({ message }) => setResult(message.content),
       });
@@ -26,28 +28,30 @@ const OpenAITool = () => {
       console.error("Something went wrong!", error);
     }
   }
-// AUDIO
+  
+  // llm speaking function
   async function handleSpeakClick() {
     if (!text) return;
     const { audioUrl } = await llm.speak({ text });
     setAudioUrl(audioUrl);
   }
-  return (
-    <div>
 
-      {/* INFO DE LA FRASE */}
-      <button onClick={handleClick}>Send</button>
+  return (
+    <>
+    <QuoteGeneratorModalInnerCon>
+
+      {/* INFO */}
+      <GenericButton text="Read more info about the quote" onClick={() => handleChatClick()} />
       <div style={{ whiteSpace: "pre-wrap" }}>{result}</div>
+      </QuoteGeneratorModalInnerCon>
+    <QuoteGeneratorModalInnerCon>
 
       {/* AUDIO */}
+      <GenericButton text="Hear Quote" onClick={() => handleSpeakClick()} />
+      {audioUrl && <audio src={audioUrl} controls />}
 
-      <button style={{margin: 0}} onClick={handleSpeakClick} >
-      Speak
-    </button>
-    {audioUrl && <audio src={audioUrl} controls />}
-
-
-    </div>
+    </QuoteGeneratorModalInnerCon>
+    </>
   );
   }
   

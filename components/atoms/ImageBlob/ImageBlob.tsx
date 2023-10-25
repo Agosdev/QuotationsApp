@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import Image from 'next/image'
 
 interface ImageBlobProps {
@@ -16,7 +16,7 @@ const ImageBlob = ({
     }
 
     return (
-        <Image src={blobUrl} alt="Generated quote card" width={150} height={100} />
+        <Image src={blobUrl} alt="Generated quote card" width={250} height={200} />
     )
 }
 

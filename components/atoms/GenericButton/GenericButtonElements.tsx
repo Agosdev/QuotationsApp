@@ -14,6 +14,7 @@ export const ButtonInnerCon = styled.div`
     transform: translate(-50%,-50%);
     position: absolute;
     width: 100%;
+    height: 100%;
     background-color: transparent;
 `;
 
@@ -21,7 +22,7 @@ export const ButtonTitle = styled.div`
     font-family: var(--font);
     font-size: 50px;
     text-align: center;
-    color: var(--gray);
+    color: var(--white);
     padding: 0px 20px 0px 20px;
     position: relative;
     background-color: transparent;
@@ -33,7 +34,7 @@ export const ButtonTitle = styled.div`
 `;
 
 export const ButtonSubTitle = styled.div`
-    color: var(--gray);
+    color: var(--white);
     font-family: var(--font);
     font-size: 35px;
     position: relative;
@@ -76,7 +77,7 @@ export const Button = styled.div`
 `;
 
 export const ButtonText = styled.div`
-    color: white;
+    color: var(--white);
     font-family: var(--font);
     font-size: 35px;
     left: 50%;

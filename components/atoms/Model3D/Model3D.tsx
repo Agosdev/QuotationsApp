@@ -16,8 +16,8 @@ const Model3D = ({name, reference, scale, position, onClick, model, children}: I
 
     return (
         <mesh name={name} ref={reference} scale={scale} position={position} onClick={onClick} >
-         {scene && <primitive object={scene}  />}
-        {children}
+            {scene && <primitive object={scene}  />}
+            {children}
         </mesh>
     )
 }

@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
 import Footer from "@/components/atoms/Footer/Footer";
 import GenericButton from "@/components/atoms/GenericButton/GenericButton";
-import QuoteGeneratorModal from "@/components/molecules/QuoteGenerator";
+import QuoteGeneratorModal from "@/components/molecules/QuoteGeneratorModal/QuoteGeneratorModal";
 import { API } from "aws-amplify";
 import { generateAQuote, quotesQueryName } from '@/src/graphql/queries'
 import { GraphQLResult } from '@aws-amplify/api-graphql'
+import { GenerateQuotesCon } from "./GenerateQuotesElements";
 
 const GenerateQuotes = () => {
 
@@ -36,10 +37,11 @@ const GenerateQuotes = () => {
       
       
       const [numberOfQuotes, setNumberOfQuotes] = useState<Number | null>(0);
-      const [openGenerator, setOpenGenerator] = useState(false);
-      const [processingQuote, setProcessingQuote] = useState(false);
+      const [openGenerator, setOpenGenerator] = useState<boolean>(false);
+      const [processingQuote, setProcessingQuote] = useState<boolean>(false);
       const [quoteReceived, setQuoteReceived] = useState<String | null>(null);
-      
+      const [hideButton, setHideButton] = useState<boolean>(false);
+
       // Function to fetch our DynamoDB object (quotes generated)
       const updateQuoteInfo = async () => {
         try {
@@ -77,13 +79,15 @@ const GenerateQuotes = () => {
           setOpenGenerator(false);
           setProcessingQuote(false);
           setQuoteReceived(null);
+          setHideButton(false)
         }
       
           const handleOpenGenerator = async (e: React.SyntheticEvent) => {
             e.preventDefault();
             setOpenGenerator(true);
             setProcessingQuote(true);
-        
+            setHideButton(true)
+
             try {
               // Run Lambda Function
               const runFunction = "runFunction";
@@ -116,7 +120,7 @@ const GenerateQuotes = () => {
       
 
   return (
-    <>
+    <GenerateQuotesCon>
         <QuoteGeneratorModal
             open={openGenerator}
             close={handleCloseGenerator}
@@ -126,10 +130,10 @@ const GenerateQuotes = () => {
             setQuoteReceived={setQuoteReceived}
         />
         
-        <GenericButton text={'Get a quote'} onClick={(e: React.SyntheticEvent) => handleOpenGenerator(e)} />
+        {!hideButton && <GenericButton text={'Get a quote'} onClick={(e: React.SyntheticEvent) => handleOpenGenerator(e)} />}
 
-        <Footer numberOfQuotes={numberOfQuotes}/>
-    </>
+        {/* <Footer numberOfQuotes={numberOfQuotes}/> */}
+    </ GenerateQuotesCon >
   );
 };
 

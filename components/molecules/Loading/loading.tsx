@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {memo} from 'react'
 import { Cloud, Float, Text3D, useMatcapTexture } from '@react-three/drei'
 import { Colors } from '@/enums';
  
@@ -9,9 +9,9 @@ const Loading = () => {
 
 
   const textProps = {
-    letterSpacing: 0.5,
+    letterSpacing: 0.1,
     size: 0.3,
-    textAlign: 'center',
+    textAlign: 'right',
     font: "/fonts/gt.json"
   }
 
@@ -26,8 +26,8 @@ const Loading = () => {
           <spotLight intensity={300} angle={Math.PI/1} position={[-8,15,-3]} />
 
           <Text3D {...textProps}>
-          {`LOADING...`}
-          <meshMatcapMaterial color="white" matcap={matcapTexture} />
+            {`Good things come \nto those who \nwait...`}
+            <meshMatcapMaterial color="white" matcap={matcapTexture} />
           </Text3D>
 
        </Float>
@@ -35,4 +35,4 @@ const Loading = () => {
   )
 }
 
-export default Loading
+export default memo(Loading)
