@@ -19,12 +19,12 @@ const fs = require('fs');
 // Function: update DynamoDB table
 async function updateQuoteDDBObject() {
 
-    const quoteTableName = process.env.API_QUOTATIONS_NAME
+    const quoteTableName = "QuoteAppData-maz24f2difbnthxmwavk76yb64-dev"
     const quoteObjectID = "203532148628671682974077446150";
 
     try {
       var quoteParams = {
-          TableName: "QuoteAppData-maz24f2difbnthxmwavk76yb64-dev",
+          TableName: quoteTableName,
           Key: {
               "id": quoteObjectID,
           },
