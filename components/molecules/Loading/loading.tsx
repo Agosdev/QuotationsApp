@@ -4,7 +4,7 @@ import { Colors } from '@/enums';
  
 
 const Loading = () => {
-
+ 
   const [matcapTexture] = useMatcapTexture("3B3C3F_DAD9D5_929290_ABACA8");
 
   const textProps = {
