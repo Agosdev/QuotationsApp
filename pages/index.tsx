@@ -17,7 +17,7 @@ export default function Home() {
 
 
       <BackgroundCon> 
-          <Layout3D loading>
+          <Layout3D loading orbitControls>
                 <Scene3D HTMLContent={<GenerateQuotes />}/>
           </Layout3D>
       </BackgroundCon>

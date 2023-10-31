@@ -27,7 +27,7 @@ const OpenAITool = () => {
     <OpenAIToolCon>
       <TextResultCon>
         <ResultCon>
-        <TextInput placeholder="Paste the quote here" onChange={(e: React.ChangeEvent<HTMLInputElement>) => setText(e.target.value)} value={text} />
+        <TextInput placeholder="Write the quote here" onChange={(e: React.ChangeEvent<HTMLInputElement>) => setText(e.target.value)} value={text} />
         <Button onClick={() => handleChatClick()} > {'>'} </Button>
         </ResultCon>
         <TextResult>{result}</TextResult> 
