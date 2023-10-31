@@ -7,18 +7,19 @@ export const FooterCon = styled.div`
   font-family: 'Source Code Pro', monospace;
   font-size: 15px;
   position: absolute;
-  top: 0;
+  left: 10;
   color: var(--gray);
   z-index: 999999;
   background-color: transparent;
 `;
 
 export const RedSpan = styled.span`
-    color: red;
-    background-color: transparent;
+  color: red;
+  background-color: transparent;
 `;
 
 export const FooterLink = styled(Link)`
-    color: var(--gray);
-    background-color: transparent;
+  color: var(--gray);
+  background-color: transparent;
+
 `;

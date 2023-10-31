@@ -6,9 +6,9 @@ export function getTimeOfDay() {
         let currenthour = moment().format("hh");
         let hour = Number(currenthour)
         
-        if (hour >= 1 && hour < 6){
+        if (hour >= 1 && hour < 3){
             return DayTime.DAY;
-        } else if (hour >= 7 && hour < 11){
+        } else if (hour >= 4 && hour < 12){
             return DayTime.NIGHT;
         }
       

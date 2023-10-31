@@ -24,6 +24,12 @@
       },
       "api": {
         "quotations": {}
+      },
+      "hosting": {
+        "amplifyhosting": {
+          "appId": "d1g8lazs62o3to",
+          "type": "cicd"
+        }
       }
     }
   }

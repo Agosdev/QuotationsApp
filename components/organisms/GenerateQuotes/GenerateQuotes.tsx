@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import Footer from "@/components/atoms/Footer/Footer";
 import GenericButton from "@/components/atoms/GenericButton/GenericButton";
 import QuoteGeneratorModal from "@/components/molecules/QuoteGeneratorModal/QuoteGeneratorModal";
 import { API } from "aws-amplify";
@@ -129,9 +128,12 @@ const GenerateQuotes = () => {
             setQuoteReceived={setQuoteReceived}
         />
         
-        {!hideButton && <GenericButton text={'Get a quote'} onClick={(e: React.SyntheticEvent) => handleOpenGenerator(e)} />}
+        {!hideButton && 
+        <GenericButton text={'Get a quote'} onClick={(e: React.SyntheticEvent) => handleOpenGenerator(e)} />
+        }
 
-        <Footer numberOfQuotes={numberOfQuotes}/>
+        {/* Quotes Generated: {numberOfQuotes}.  */}
+
     </ GenerateQuotesCon >
   );
 };

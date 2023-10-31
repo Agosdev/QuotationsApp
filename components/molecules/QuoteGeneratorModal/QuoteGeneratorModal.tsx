@@ -107,9 +107,9 @@ const QuoteGeneratorModal = ({
                                     </ImageBlobCon>
                                     <GenericButton text={'Download card'} onClick={() => handleDownload()} /> 
                                 <QuoteGeneratorModalInnerCon> 
-                                    {/* <QuoteGeneratorSubTitle style={{cursor: 'pointer'}} onClick={() => setStep3Visible(true)} >
+                                    <QuoteGeneratorSubTitle style={{cursor: 'pointer'}} onClick={() => setStep3Visible(true)} >
                                         I want to know more about this quote
-                                    </QuoteGeneratorSubTitle> */}
+                                    </QuoteGeneratorSubTitle>
                                 </QuoteGeneratorModalInnerCon>
                              </>
                         }

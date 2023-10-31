@@ -1,25 +1,19 @@
 'use client';
 
-import GenericButton from "@/components/atoms/GenericButton/GenericButton";
-import React, { useEffect, useState } from "react";
+import React, {  useState } from "react";
 import useLLM from "usellm";
-import { OpenAIToolCon } from "./OpenAIToolElements";
+import { Button, OpenAIToolCon, TextInput, TextResult, TextResultCon, ResultCon } from "./OpenAIToolElements";
 
-const defaultQuote =  'The way to get started is to quit talking and begin doing.'
 
 const OpenAITool = () => {
-  // llm chat states
   const llm = useLLM({ serviceUrl: "https://usellm.org/api/llm" });
   const [result, setResult] = useState("");
-  // llm speaking states
-  const [text, setText] = useState<string>(defaultQuote)
-  const [audioUrl, setAudioUrl] = useState<string>('')
+  const [text, setText] = useState<string>("")
 
-  // llm chat function
   async function handleChatClick() {
     try {
       await llm.chat({
-        messages: [{ role: "user", content: `Give me more information about the following quote: ${text}` }],
+        messages: [{ role: "user", content: `Give me information about the following quote: "${text}". Limit response up to 500 characters` }],
         stream: true,
         onStream: ({ message }) => setResult(message.content),
       });
@@ -28,46 +22,19 @@ const OpenAITool = () => {
       console.error("Something went wrong!", error);
     }
   }
-  
-  // llm speaking function
-  async function handleSpeakClick() {
-    if (!text) return;
-    const { audioUrl } = await llm.speak({ text });
-    setAudioUrl(audioUrl);
-  }
-
-  useEffect(() => {
-    const getQuote = localStorage.getItem('quoteText')
-    console.log(getQuote)
-    if(getQuote) {
-      setText(getQuote)
-    }
-    handleChatClick()
-  }, [])
-
 
   return (
     <OpenAIToolCon>
-
-        {/* INFO */}
-         <div style={{ whiteSpace: "pre-wrap" }}>{text}</div>
-         {/* <div style={{ whiteSpace: "pre-wrap" }}>{result}</div> */}
-        {/* <OpenAIToolCon> */}
-
-        {/* AUDIO */}
-        {/* <GenericButton text="Hear Quote" onClick={() => handleSpeakClick()} />
-        {audioUrl && <audio src={audioUrl} controls />} */}
-
-      {/* </OpenAIToolCon> */}
+      <TextResultCon>
+        <ResultCon>
+        <TextInput placeholder="Paste the quote here" onChange={(e: React.ChangeEvent<HTMLInputElement>) => setText(e.target.value)} value={text} />
+        <Button onClick={() => handleChatClick()} > {'>'} </Button>
+        </ResultCon>
+        <TextResult>{result}</TextResult> 
+      </TextResultCon>
     </OpenAIToolCon>
   );
   }
   
 
-export default OpenAITool
- 
-
-
-
-
-  
+export default OpenAITool;

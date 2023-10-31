@@ -5,16 +5,17 @@ import { OrbitControls } from "@react-three/drei";
 
 interface ILayout3D {
   children: React.ReactNode,
-  loading?: boolean
+  loading?: boolean,
+  orbitControls?: boolean
 }
 
-const Layout3D = ({children, loading = false}: ILayout3D) => {
+const Layout3D = ({children, loading = false, orbitControls = false}: ILayout3D) => {
   return (
   
         <Canvas>
             <Suspense fallback={loading ? <Loading /> : null}>
                 {children}
-                <OrbitControls autoRotate enablePan={false} />  
+                {orbitControls && <OrbitControls autoRotate enablePan={false} />}
             </Suspense>
         </Canvas>
   );
