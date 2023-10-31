@@ -1,10 +1,12 @@
-import React from 'react'
+import React, {memo} from 'react'
 import { Cloud, Float, Text3D, useMatcapTexture } from '@react-three/drei'
 import { Colors } from '@/enums';
  
 
 const Loading = () => {
+
   const [matcapTexture] = useMatcapTexture("3B3C3F_DAD9D5_929290_ABACA8");
+
   const textProps = {
     letterSpacing: 0.1,
     size: 0.3,
@@ -32,4 +34,4 @@ const Loading = () => {
   )
 }
 
-export default Loading;
+export default memo(Loading)

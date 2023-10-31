@@ -1,3 +1,5 @@
+'use client'
+
 import Head from 'next/head'
 import Scene3D from '@/components/molecules/Scene3D/Scene3D'
 import Layout3D from '@/components/molecules/Layout3D/Layout3D'

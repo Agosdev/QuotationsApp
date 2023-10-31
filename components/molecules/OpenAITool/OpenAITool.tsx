@@ -1,5 +1,3 @@
-'use client';
-
 import React, {  useState } from "react";
 import useLLM from "usellm";
 import { Button, OpenAIToolCon, TextInput, TextResult, TextResultCon, ResultCon } from "./OpenAIToolElements";
