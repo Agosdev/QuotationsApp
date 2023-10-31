@@ -1,3 +1,8 @@
+export enum Methods {
+    GET = 'GET',
+    POST = 'POST',
+}
+
 export enum Colors {
     PINK = '#ff00f7',
     GREEN = '#00ff1e',

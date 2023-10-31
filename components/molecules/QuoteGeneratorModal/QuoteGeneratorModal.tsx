@@ -18,9 +18,6 @@ interface QuoteGeneratorModalProps {
     quoteReceived: string | null;
 }
 
-const style = {
-};
-
 const QuoteGeneratorModal = ({
     open, 
     close,
@@ -77,7 +74,7 @@ const QuoteGeneratorModal = ({
             }}
         >
             <Fade in={open}>
-                <QuoteGeneratorModalCon sx={style}>
+                <QuoteGeneratorModalCon sx={{}}>
                     <QuoteGeneratorModalInnerCon>
                         {/* State #1: Processing request of quote + quote state is empty */}
                         {(processingQuote === true && quoteReceived === null) &&
