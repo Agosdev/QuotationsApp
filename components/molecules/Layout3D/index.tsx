@@ -1,6 +1,6 @@
 import { Canvas } from "@react-three/fiber";
 import React, { Suspense } from "react";
-import Loading from "../Loading/Loading";
+import Loading from "../Loading";
 import { OrbitControls } from "@react-three/drei";
 
 interface ILayout3D {

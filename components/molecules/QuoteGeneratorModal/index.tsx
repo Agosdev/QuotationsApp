@@ -4,10 +4,10 @@ import React, { useState, useEffect } from 'react'
 import { Backdrop, Fade, Modal } from '@mui/material'
 import { QuoteGeneratorModalCon, QuoteGeneratorModalInnerCon, QuoteGeneratorSubTitle, QuoteGeneratorTitle } from './QuoteGeneratorModalElements';
 import { ImageBlobCon } from '@/components/atoms/ImageBlob/ImageBlobElements';
-import ImageBlob from '@/components/atoms/ImageBlob/ImageBlob';
- import GenericButton from '@/components/atoms/GenericButton/GenericButton';
-import LinkTo from '@/components/atoms/LinkTo/LinkTo';
-import OpenAITool from '../OpenAITool/OpenAITool';
+import ImageBlob from '@/components/atoms/ImageBlob';
+ import GenericButton from '@/components/atoms/GenericButton';
+import LinkTo from '@/components/atoms/LinkTo';
+import OpenAITool from '../OpenAITool';
 
 interface QuoteGeneratorModalProps {
     open: boolean,

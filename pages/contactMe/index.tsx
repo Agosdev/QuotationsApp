@@ -2,7 +2,7 @@
 
 import React from "react";
 import { BackgroundCon } from "@/styles/globals";
-import LinkTo from "@/components/atoms/LinkTo/LinkTo";
+import LinkTo from "@/components/atoms/LinkTo";
 
 const index = () => {
 

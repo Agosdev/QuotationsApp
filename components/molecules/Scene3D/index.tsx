@@ -2,10 +2,10 @@ import * as THREE from 'three';
 import {  useCallback, useEffect, useMemo, useRef, useState  } from "react";
 import {  Cloud, Float, Html, PerspectiveCamera,  Sky,  Sparkles, Stars } from "@react-three/drei";
 import {  useFrame } from "@react-three/fiber";
-import Audio from "../../atoms/Audio/Audio";
+import Audio from "../../atoms/Audio";
 import { getRandomInt } from "@/utils/randomNumber";
-import Generic3DObject from "../../atoms/Generic3DObject/Generic3DObject";
-import Model3D from "../../atoms/Model3D/Model3D";
+import Generic3DObject from "../../atoms/Generic3DObject";
+import Model3D from "../../atoms/Model3D";
 import { Colors, DayTime } from '@/enums';
 import { getTimeOfDay } from '@/utils/getTimeOfDay';
 

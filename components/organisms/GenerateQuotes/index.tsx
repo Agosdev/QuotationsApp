@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import GenericButton from "@/components/atoms/GenericButton/GenericButton";
-import QuoteGeneratorModal from "@/components/molecules/QuoteGeneratorModal/QuoteGeneratorModal";
+import GenericButton from "@/components/atoms/GenericButton";
+import QuoteGeneratorModal from "@/components/molecules/QuoteGeneratorModal";
 import { API } from "aws-amplify";
 import { generateAQuote, quotesQueryName } from '@/src/graphql/queries'
 import { GraphQLResult } from '@aws-amplify/api-graphql'
