@@ -7,6 +7,8 @@ Amplify Params - DO NOT EDIT */
  */
 
 // AWS packages
+const AWS = require('aws-sdk');
+const docClient = new AWS.DynamoDB.DocumentClient();
 
 // Image generation packages
 const sharp = require('sharp');
@@ -14,15 +16,13 @@ const fetch = require('node-fetch');
 const path = require('path');
 const fs = require('fs');
 
-import { DynamoDBClient } from "@aws-sdk/client-dynamodb";
-import { DynamoDBDocumentClient, UpdateCommand } from "@aws-sdk/lib-dynamodb";
-const client = new DynamoDBClient({});
-const docClient = DynamoDBDocumentClient.from(client);
-
 // Function: update DynamoDB table
-export const updateQuoteDDBObject = async () => {
-    try {
-  const command = new UpdateCommand({
+async function updateQuoteDDBObject() {
+  const quoteTableName = "QuoteAppData-maz24f2difbnthxmwavk76yb64-dev"
+  const quoteObjectID = "203532148628671682974077446150";
+
+  try {
+      var quoteParams = {
           TableName: quoteTableName,
           Key: {
               "id": quoteObjectID,
@@ -35,11 +35,10 @@ export const updateQuoteDDBObject = async () => {
               "#quotesGenerated": "quotesGenerated",
           },
           ReturnValues: "UPDATED_NEW"
-  });
+      };
 
-  const response = await docClient.send(command);
-  console.log(response);
-  return response;
+      const updateQuoteObject = await docClient.update(quoteParams).promise();
+      return updateQuoteObject;
   } catch (error) {
       console.log('error updating quote object in DynamoDB', error)
   }
